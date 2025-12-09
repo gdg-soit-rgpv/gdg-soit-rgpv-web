@@ -3,7 +3,7 @@ import type React from "react"
 import { useMemo, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
 
-export const BackgroundRippleEffect = ({
+export const BackgroundRipple = ({
   rows = 8,
   cols = 27,
   cellSize = 56,
@@ -28,6 +28,28 @@ export const BackgroundRippleEffect = ({
         "dark:[--cell-border-color:var(--color-neutral-700)] dark:[--cell-fill-color:var(--color-neutral-900)] dark:[--cell-shadow-color:var(--color-neutral-800)]",
       )}
     >
+      <style jsx global>{`
+        @keyframes cell-ripple {
+          0% {
+            background-color: var(--cell-fill-color);
+            transform: scale(1);
+            opacity: 0.4;
+          }
+          50% {
+            background-color: var(--ripple-color);
+            transform: scale(1.5);
+            opacity: 0.8;
+          }
+          100% {
+            background-color: var(--cell-fill-color);
+            transform: scale(1);
+            opacity: 0.4;
+          }
+        }
+        .animate-cell-ripple {
+          animation: cell-ripple var(--duration) linear var(--delay) forwards;
+        }
+      `}</style>
       <div className="relative h-auto w-auto overflow-hidden">
         <div className="pointer-events-none absolute inset-0 z-[2] h-full w-full overflow-hidden" />
         <DivGrid
@@ -65,13 +87,15 @@ type DivGridProps = {
 type CellStyle = React.CSSProperties & {
   ["--delay"]?: string
   ["--duration"]?: string
+  ["--ripple-color"]?: string
 }
 
+// Google Brand Colors (Pastel versions for better background blend)
 const GOOGLE_PASTEL_COLORS = [
-  "#a8c7fa", // pastel blue
-  "#f6aea9", // pastel red
-  "#fef0a7", // pastel yellow
-  "#a8dab5", // pastel green
+  "#4285F4", // Blue
+  "#EA4335", // Red
+  "#FBBC05", // Yellow
+  "#34A853", // Green
 ]
 
 const DivGrid = ({
@@ -79,16 +103,18 @@ const DivGrid = ({
   rows = 7,
   cols = 30,
   cellSize = 56,
-  borderColor = "#3f3f46",
+  borderColor = "#e4e4e7",
   fillColor = "rgba(14,165,233,0.3)",
   clickedCell = null,
-  onCellClick = () => {},
+  onCellClick = () => { },
   interactive = true,
 }: DivGridProps) => {
+  // Track which cell is hovered (index)
   const [hoveredCell, setHoveredCell] = useState<number | null>(null)
-  const [hoverColor, setHoverColor] = useState<string | null>(null)
+  // Track color for current hover
+  const [hoverColor, setHoverColor] = useState<string>("")
 
-  const cells = useMemo(() => Array.from({ length: rows * cols }, (_, idx) => idx), [rows, cols])
+  const cells = useMemo(() => Array.from({ length: rows * cols }, (_, i) => i), [rows, cols])
 
   const gridStyle: React.CSSProperties = {
     display: "grid",
@@ -99,40 +125,48 @@ const DivGrid = ({
     marginInline: "auto",
   }
 
-  const getRandomGoogleColor = () => {
-    return GOOGLE_PASTEL_COLORS[Math.floor(Math.random() * GOOGLE_PASTEL_COLORS.length)]
-  }
+  // pick a random color from the 4 Google pastel colors
+  const getRandomGoogleColor = () =>
+    GOOGLE_PASTEL_COLORS[Math.floor(Math.random() * GOOGLE_PASTEL_COLORS.length)]
 
   return (
     <div className={cn("relative z-[3]", className)} style={gridStyle}>
       {cells.map((idx) => {
         const rowIdx = Math.floor(idx / cols)
         const colIdx = idx % cols
-        const distance = clickedCell ? Math.hypot(clickedCell.row - rowIdx, clickedCell.col - colIdx) : 0
-        const delay = clickedCell ? Math.max(0, distance * 55) : 0 // ms
-        const duration = 200 + distance * 80 // ms
+
+        const distance = clickedCell
+          ? Math.hypot(clickedCell.row - rowIdx, clickedCell.col - colIdx)
+          : 0
+        const delay = clickedCell ? Math.max(0, distance * 55) : 0
+        const duration = 200 + distance * 80
+        const colorIndex = Math.floor(distance) % GOOGLE_PASTEL_COLORS.length
+        const rippleColor = GOOGLE_PASTEL_COLORS[colorIndex]
 
         const style: CellStyle = clickedCell
           ? {
-              "--delay": `${delay}ms`,
-              "--duration": `${duration}ms`,
-            }
+            "--delay": `${delay}ms`,
+            "--duration": `${duration}ms`,
+            "--ripple-color": rippleColor,
+          }
           : {}
 
+        // When hovered, use hoverColor with more opacity; else, default fillColor
         const isHovered = hoveredCell === idx
-        const cellBgColor = isHovered && hoverColor ? hoverColor : fillColor
+        const backgroundColor = isHovered ? `${hoverColor}80` : fillColor
 
         return (
           <div
             key={idx}
             className={cn(
-              "cell relative border-[0.5px] opacity-40 transition-all duration-150 will-change-transform hover:opacity-80 dark:shadow-[0px_0px_40px_1px_var(--cell-shadow-color)_inset]",
-              clickedCell && "animate-cell-ripple [animation-fill-mode:none]",
+              "cell relative border-[0.5px] opacity-50 transition-all duration-200 ease-out will-change-transform hover:opacity-90 dark:shadow-[0px_0px_40px_1px_var(--cell-shadow-color)_inset]",
+              clickedCell && "animate-cell-ripple",
               !interactive && "pointer-events-none",
             )}
             style={{
-              backgroundColor: cellBgColor,
-              borderColor: borderColor,
+              backgroundColor,
+              borderColor,
+              animationFillMode: "none", // ✅ prevents permanent override
               ...style,
             }}
             onMouseEnter={() => {
@@ -141,7 +175,10 @@ const DivGrid = ({
             }}
             onMouseLeave={() => {
               setHoveredCell(null)
-              setHoverColor(null)
+            }}
+            onAnimationEnd={(e) => {
+              // ✅ Remove ripple class after animation finishes to restore normal styles
+              e.currentTarget.classList.remove("animate-cell-ripple")
             }}
             onClick={interactive ? () => onCellClick?.(rowIdx, colIdx) : undefined}
           />
