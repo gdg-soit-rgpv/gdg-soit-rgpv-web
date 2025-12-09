@@ -36,7 +36,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-black mb-2">Location</h3>
-                    <p className="text-gray-600">School of Information Technology, RGPV, Indore</p>
+                    <p className="text-gray-600">School of Information Technology, RGPV, Bhopal</p>
                   </div>
                 </div>
               </div>
