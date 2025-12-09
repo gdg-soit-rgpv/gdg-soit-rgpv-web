@@ -2,125 +2,208 @@
 
 import Footer from "@/components/footer"
 import SmoothScroll from "@/components/smooth-scroll"
-import { Calendar, MapPin } from "lucide-react"
+import { Calendar, MapPin, ArrowRight, Sparkles } from "lucide-react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
+import { motion } from "framer-motion"
 
+// Enhanced data with images for better visuals
 const events = [
   {
     id: "devfest-2024",
     title: "DevFest 2024",
     date: "December 15, 2024",
     location: "SOIT Campus",
-    description:
-      "The biggest developer festival of the year featuring talks, workshops, and networking.",
-    tag: "Featured",
-    details:
-      "DevFest 2024 brings developers, designers, and tech enthusiasts together to explore cutting-edge technologies, participate in hands-on sessions, and network with like-minded professionals. Expect keynote speakers, live coding, and a celebration of community innovation!",
+    description: "The biggest developer festival of the year featuring talks, workshops, and networking.",
+    tag: "Flagship Event",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop",
+    featured: true,
   },
   {
     id: "flutter-forward",
     title: "Flutter Forward",
     date: "January 20, 2025",
     location: "Tech Hub Auditorium",
-    description:
-      "Explore the latest in Flutter development with hands-on sessions and expert insights.",
+    description: "Explore the latest in Flutter development with hands-on sessions and expert insights.",
     tag: "Workshop",
-    details:
-      "Flutter Forward dives deep into the modern cross-platform development ecosystem. Learn how to build beautiful apps faster and explore what's new in Flutter 4.0 with Google's developer experts.",
+    // Replaced corrupted image with a working mobile/tech themed image
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "cloud-study-jam",
     title: "Cloud Study Jam",
     date: "February 8, 2025",
     location: "Innovation Lab",
-    description:
-      "Deep dive into Google Cloud technologies with guided learning paths and certifications.",
+    description: "Deep dive into Google Cloud technologies with guided learning paths and certifications.",
     tag: "Study Jam",
-    details:
-      "Our Cloud Study Jam gives you practical experience with Google Cloud through guided labs and real-world challenges. Perfect for developers eager to upskill and earn badges and certifications.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "web-dev-bootcamp",
     title: "Web Development Bootcamp",
     date: "March 5, 2025",
     location: "Online",
-    description:
-      "Master modern web development with React, Next.js, and TypeScript.",
+    description: "Master modern web development with React, Next.js, and TypeScript.",
     tag: "Bootcamp",
-    details:
-      "Join this immersive online bootcamp to master the full stack — from frontend frameworks like React and Next.js to backend APIs. Build projects, gain mentorship, and level up your web dev skills.",
+    image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "ai-ml-meetup",
-    title: "AI & Machine Learning Meetup",
+    title: "AI & ML Meetup",
     date: "March 22, 2025",
     location: "Innovation Center",
-    description:
-      "Discover the latest trends in AI, ML, and explore practical applications.",
+    description: "Discover the latest trends in AI, ML, and explore practical applications.",
     tag: "Meetup",
-    details:
-      "An open meetup where developers, data scientists, and AI enthusiasts discuss trends, breakthroughs, and practical implementations of AI and ML across industries.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "android-workshop",
-    title: "Android Development Workshop",
+    title: "Android Workshop",
     date: "April 10, 2025",
     location: "SOIT Lab",
-    description:
-      "Build scalable Android applications with Kotlin and modern architecture patterns.",
+    description: "Build scalable Android applications with Kotlin and modern architecture patterns.",
     tag: "Workshop",
-    details:
-      "A complete hands-on session covering modern Android development using Kotlin, Jetpack Compose, and MVVM architecture. Build, test, and deploy your first app with experts from GDG SOIT RGPV.",
+    image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?q=80&w=800&auto=format&fit=crop",
   },
 ]
 
 export default function EventsPage() {
   const router = useRouter()
+  const featuredEvent = events.find((e) => e.featured)
+  const regularEvents = events.filter((e) => !e.featured)
 
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-white">
-        <div className="pt-32 pb-20 px-4 md:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-16 text-center">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">Upcoming Events</h1>
-              <p className="text-xl text-neutral-600">
-                Join us at our upcoming events and connect with the developer community at GDG SOIT RGPV.
+      <main className="min-h-screen bg-white text-neutral-900">
+        
+        {/* --- Header --- */}
+        <section className="pt-32 pb-12 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.6 }}
+               className="mb-12"
+            >
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+                Connect. Learn.<br />
+                <span className="text-neutral-400">Grow Together.</span>
+              </h1>
+              <p className="text-xl text-neutral-600 max-w-2xl">
+                From hands-on workshops to large-scale conferences, join us to explore the future of technology.
               </p>
+            </motion.div>
+
+            {/* --- Featured Event (Hero Card) --- */}
+            {featuredEvent && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                onClick={() => router.push(`/events/${featuredEvent.id}`)}
+                className="group relative w-full h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer"
+              >
+                <Image
+                  src={featuredEvent.image}
+                  alt={featuredEvent.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                
+                <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full md:w-2/3 text-white">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-sm font-medium mb-4">
+                    <Sparkles className="w-4 h-4 text-yellow-300" />
+                    <span>Featured Event</span>
+                  </div>
+                  <h2 className="text-4xl md:text-6xl font-bold mb-4">{featuredEvent.title}</h2>
+                  <p className="text-lg md:text-xl text-neutral-200 mb-8 line-clamp-2">
+                    {featuredEvent.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap items-center gap-6 text-sm font-medium">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-5 h-5 text-neutral-400" />
+                      <span>{featuredEvent.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-5 h-5 text-neutral-400" />
+                      <span>{featuredEvent.location}</span>
+                    </div>
+                    <div className="ml-auto md:ml-4 flex items-center gap-2 text-white group-hover:translate-x-2 transition-transform">
+                      View Details <ArrowRight className="w-5 h-5" />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </section>
+
+        {/* --- Upcoming Events Grid --- */}
+        <section className="py-20 px-6 md:px-12 bg-neutral-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-center justify-between mb-12">
+              <h2 className="text-3xl font-bold">Upcoming Sessions</h2>
+              <div className="hidden md:block text-sm text-neutral-500 font-medium">
+                Showing {regularEvents.length} events
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {events.map((event) => (
-                <div
+              {regularEvents.map((event, index) => (
+                <motion.div
                   key={event.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
                   onClick={() => router.push(`/events/${event.id}`)}
-                  className="cursor-pointer bg-white rounded-3xl p-8 border border-neutral-200 hover:border-neutral-300 hover:shadow-lg transition-all duration-300"
+                  className="group cursor-pointer bg-white rounded-3xl overflow-hidden border border-neutral-200 hover:shadow-xl hover:border-neutral-300 transition-all duration-300 flex flex-col"
                 >
-                  <div className="mb-6">
-                    <span className="inline-flex px-3 py-1 text-xs font-medium rounded-full bg-neutral-900 text-white">
-                      {event.tag}
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-medium text-neutral-900 mb-4">{event.title}</h3>
-                  <p className="text-neutral-500 font-light leading-relaxed mb-6">{event.description}</p>
-                  <div className="space-y-3 text-sm text-neutral-400">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4" />
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4" />
-                      <span>{event.location}</span>
+                  {/* Image Area */}
+                  <div className="relative h-56 w-full overflow-hidden">
+                    <Image
+                      src={event.image}
+                      alt={event.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute top-4 left-4">
+                        <span className="inline-block px-3 py-1 text-xs font-bold tracking-wide uppercase bg-white/90 backdrop-blur-sm rounded-full text-neutral-900 shadow-sm">
+                            {event.tag}
+                        </span>
                     </div>
                   </div>
-                  <button className="mt-8 w-full py-2 text-neutral-900 font-medium border border-neutral-200 rounded-lg hover:bg-neutral-50 transition-colors duration-300">
-                    Learn More
-                  </button>
-                </div>
+
+                  {/* Content Area */}
+                  <div className="p-8 flex flex-col flex-grow">
+                    <div className="mb-auto">
+                        <h3 className="text-2xl font-bold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
+                            {event.title}
+                        </h3>
+                        <p className="text-neutral-500 text-sm leading-relaxed mb-6 line-clamp-2">
+                            {event.description}
+                        </p>
+                    </div>
+
+                    <div className="pt-6 border-t border-neutral-100 mt-6 space-y-3">
+                      <div className="flex items-center gap-3 text-sm text-neutral-600">
+                        <Calendar className="w-4 h-4 text-neutral-400" />
+                        <span>{event.date}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-neutral-600">
+                        <MapPin className="w-4 h-4 text-neutral-400" />
+                        <span>{event.location}</span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
-        </div>
+        </section>
+
       </main>
       <Footer />
     </SmoothScroll>
