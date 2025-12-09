@@ -6,66 +6,7 @@ import { Calendar, MapPin, ArrowRight, Sparkles } from "lucide-react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { motion } from "framer-motion"
-
-// Enhanced data with images for better visuals
-const events = [
-  {
-    id: "devfest-2024",
-    title: "DevFest 2024",
-    date: "December 15, 2024",
-    location: "SOIT Campus",
-    description: "The biggest developer festival of the year featuring talks, workshops, and networking.",
-    tag: "Flagship Event",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop",
-    featured: true,
-  },
-  {
-    id: "flutter-forward",
-    title: "Flutter Forward",
-    date: "January 20, 2025",
-    location: "Tech Hub Auditorium",
-    description: "Explore the latest in Flutter development with hands-on sessions and expert insights.",
-    tag: "Workshop",
-    // Replaced corrupted image with a working mobile/tech themed image
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    id: "cloud-study-jam",
-    title: "Cloud Study Jam",
-    date: "February 8, 2025",
-    location: "Innovation Lab",
-    description: "Deep dive into Google Cloud technologies with guided learning paths and certifications.",
-    tag: "Study Jam",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    id: "web-dev-bootcamp",
-    title: "Web Development Bootcamp",
-    date: "March 5, 2025",
-    location: "Online",
-    description: "Master modern web development with React, Next.js, and TypeScript.",
-    tag: "Bootcamp",
-    image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    id: "ai-ml-meetup",
-    title: "AI & ML Meetup",
-    date: "March 22, 2025",
-    location: "Innovation Center",
-    description: "Discover the latest trends in AI, ML, and explore practical applications.",
-    tag: "Meetup",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    id: "android-workshop",
-    title: "Android Workshop",
-    date: "April 10, 2025",
-    location: "SOIT Lab",
-    description: "Build scalable Android applications with Kotlin and modern architecture patterns.",
-    tag: "Workshop",
-    image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?q=80&w=800&auto=format&fit=crop",
-  },
-]
+import { events } from "@/app/data/events"
 
 export default function EventsPage() {
   const router = useRouter()
