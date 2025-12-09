@@ -6,6 +6,7 @@ import Image from "next/image"
 
 // Unified data source with images and full details
 const events = [
+  
   {
     id: "devfest-2024",
     title: "DevFest 2024",

@@ -8,6 +8,18 @@ import { Github, Linkedin, Twitter, ArrowLeft, Mail } from "lucide-react"
 const team = [
   // --- Tech ---
   {
+    id: "pramanya-rajput",
+    name: "Pramanya Rajput",
+    role: "Community Lead",
+    image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=800&auto=format&fit=crop",
+    bio: "Leading GDG SOIT RGPV with vision, creativity, and determination — inspiring the community through innovation, collaboration, and leadership.",
+    email: "pramanya.rajput@gdgexample.com",
+    linkedin: "https://linkedin.com",
+    github: "https://github.com",
+    twitter: "https://twitter.com",
+    department: "Lead",
+  },  
+  {
     id: "alex-chen",
     name: "Alex Chen",
     role: "Community Lead",

@@ -4,21 +4,17 @@ import Footer from "@/components/footer"
 import SmoothScroll from "@/components/smooth-scroll"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { useState, useMemo } from "react"
+import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from "react-icons/fa"
 
-// --- Types ---
-type Member = {
-  id: string
-  name: string
-  role: string
-  image: string
-  bio: string
-  department: string
-}
-
-// --- Data ---
-const team: Member[] = [
-  // Tech Department
+const team = [
+  {
+    id: "pramanya-rajput",
+    name: "Pramanya Rajput",
+    role: "Community Lead",
+    image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=800&auto=format&fit=crop",
+    bio: "Leading GDG SOIT RGPV with vision, creativity, and determination — inspiring the community through innovation, collaboration, and leadership.",
+    department: "Lead",
+  },
   {
     id: "alex-chen",
     name: "Alex Chen",
@@ -44,16 +40,6 @@ const team: Member[] = [
     department: "Tech",
   },
   {
-    id: "arjun-singh",
-    name: "Arjun Singh",
-    role: "AI/ML Enthusiast",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop",
-    bio: "Deep diving into neural networks and bringing AI workshops to campus.",
-    department: "Tech",
-  },
-
-  // Event Management
-  {
     id: "sarah-miller",
     name: "Sarah Miller",
     role: "Events Coordinator",
@@ -69,26 +55,6 @@ const team: Member[] = [
     bio: "Ensures every event runs smoothly from start to finish. The man behind the scenes.",
     department: "Event Management",
   },
-
-  // Social Media
-  {
-    id: "emily-rodriguez",
-    name: "Emily Rodriguez",
-    role: "Content & Outreach",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
-    bio: "Creates engaging content and manages community outreach programs.",
-    department: "Social Media",
-  },
-  {
-    id: "sophia-lee",
-    name: "Sophia Lee",
-    role: "Social Media Manager",
-    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop",
-    bio: "Keeping the community connected through tweets, reels, and stories.",
-    department: "Social Media",
-  },
-
-  // PR
   {
     id: "james-wilson",
     name: "James Wilson",
@@ -105,8 +71,6 @@ const team: Member[] = [
     bio: "Connecting with industry partners to support our initiatives and hackathons.",
     department: "PR",
   },
-
-  // Graphics
   {
     id: "priya-patel-design",
     name: "Priya Patel",
@@ -123,8 +87,6 @@ const team: Member[] = [
     bio: "Visualizing the brand identity of our chapter. Pixel perfectionist.",
     department: "Graphics",
   },
-
-  // A/V
   {
     id: "noah-evans",
     name: "Noah Evans",
@@ -143,43 +105,51 @@ const team: Member[] = [
   },
 ]
 
-// --- Components ---
+const SocialLinks = () => (
+  <div className="flex items-center gap-3 mt-3 text-neutral-300 group-hover:text-white transition-colors">
+    <a href="#" aria-label="LinkedIn"><FaLinkedin className="hover:text-[#0A66C2]" /></a>
+    <a href="#" aria-label="GitHub"><FaGithub className="hover:text-black" /></a>
+    <a href="#" aria-label="Twitter"><FaTwitter className="hover:text-[#1DA1F2]" /></a>
+    <a href="#" aria-label="Instagram"><FaInstagram className="hover:text-[#E1306C]" /></a>
+  </div>
+)
 
-function TeamCard({ member, onClick }: { member: Member; onClick: () => void }) {
+function TeamCard({ member, onClick }: { member: any; onClick: () => void }) {
   return (
     <div
       onClick={onClick}
-      className="group relative cursor-pointer overflow-hidden rounded-2xl bg-neutral-50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+      className="group relative overflow-hidden rounded-2xl bg-neutral-50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer"
     >
-      {/* Image Container */}
-      {/* Mobile: aspect-[3/4] for better portrait fit in 2-col grid. Desktop: aspect-[4/5] */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-[4/5]">
+      <div className="relative aspect-[3/4] w-full overflow-hidden">
         <Image
-          src={member.image || "/placeholder.svg"}
+          src={member.image}
           alt={member.name}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
+          className="
+            object-cover 
+            transition-transform duration-700 
+            grayscale-0                   /* Default: full color on mobile */
+            md:grayscale                  /* Desktop: grayscale by default */
+            md:group-hover:grayscale-0    /* Desktop hover: color */
+            group-hover:scale-110
+          "
         />
-        
-        {/* Gradient Overlay - Darker on mobile for better text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300" />
+
+        <div
+          className="
+            absolute inset-0 
+            bg-gradient-to-t from-black/90 via-black/40 to-transparent 
+            opacity-80 
+            md:opacity-0 md:group-hover:opacity-100 
+            transition-opacity duration-300
+          "
+        />
       </div>
 
-      {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5 text-white translate-y-0 sm:translate-y-4 sm:group-hover:translate-y-0 transition-transform duration-300">
-        <div className="flex flex-col">
-          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-primary-200 mb-0.5 sm:mb-1 line-clamp-1">
-            {member.department}
-          </span>
-          <h3 className="text-sm sm:text-xl font-bold leading-tight line-clamp-1 sm:line-clamp-none">{member.name}</h3>
-          <p className="text-[10px] sm:text-sm font-medium text-neutral-300 line-clamp-1 sm:line-clamp-none">{member.role}</p>
-          
-          {/* Bio - Hidden on mobile to keep cards compact, visible on desktop hover */}
-          <p className="mt-3 hidden sm:block text-sm text-neutral-200 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
-            {member.bio}
-          </p>
-        </div>
+      <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+        <h3 className="text-lg font-bold leading-tight">{member.name}</h3>
+        <p className="text-sm font-medium text-neutral-300">{member.role}</p>
+        <SocialLinks />
       </div>
     </div>
   )
@@ -187,63 +157,37 @@ function TeamCard({ member, onClick }: { member: Member; onClick: () => void }) 
 
 export default function TeamPage() {
   const router = useRouter()
-  const [activeTab, setActiveTab] = useState("All")
-
-  // Extract unique departments dynamically
-  const departments = useMemo(() => {
-    const deps = new Set(team.map((m) => m.department))
-    return ["All", ...Array.from(deps).sort()]
-  }, [])
-
-  // Filter logic
-  const filteredMembers = useMemo(() => {
-    if (activeTab === "All") return team
-    return team.filter((member) => member.department === activeTab)
-  }, [activeTab])
+  const departments = ["Tech", "Event Management", "PR", "Graphics", "A/V"]
+  const groupedMembers = departments.map((dept) => ({
+    name: dept,
+    members: team.filter((m) => m.department === dept),
+  }))
+  const mainLead = team.find((m) => m.department === "Lead")
 
   return (
     <SmoothScroll>
       <main className="min-h-screen bg-white">
-        <div className="pt-32 pb-20 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto">
-            
-            {/* Header */}
-            <div className="mb-12 md:mb-20 text-center max-w-3xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-neutral-900">
-                The Minds Behind GDG
-              </h1>
-              <p className="text-lg md:text-xl text-neutral-500">
-                Meet the passionate developers, designers, and organizers driving our community forward.
-              </p>
-            </div>
+        <div className="pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+          <div className="mb-12 text-center">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4">The Minds Behind GDG</h1>
+            <p className="text-lg text-neutral-500">Meet the leaders and innovators of GDG SOIT RGPV</p>
+          </div>
 
-            {/* Filter Tabs - Scrollable on mobile. Removed sticky behavior. */}
-            <div className="mb-12 -mx-4 px-4 py-4 md:p-0">
-              <div className="flex items-center md:justify-center gap-2 overflow-x-auto no-scrollbar pb-2 md:pb-0">
-                {departments.map((dept) => (
-                  <button
-                    key={dept}
-                    onClick={() => setActiveTab(dept)}
-                    className={`
-                      px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap
-                      ${
-                        activeTab === dept
-                          ? "bg-black text-white shadow-lg scale-105"
-                          : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
-                      }
-                    `}
-                  >
-                    {dept}
-                  </button>
-                ))}
+          {/* 🌟 Slightly Larger Pramanya Card */}
+          {mainLead && (
+            <div className="mb-20 grid place-items-center">
+              <div className="w-[85%] sm:w-[50%] lg:w-[45%]">
+                <TeamCard member={mainLead} onClick={() => router.push(`/team/${mainLead.id}`)} />
               </div>
             </div>
+          )}
 
-            {/* Grid Area */}
-            <div className="min-h-[400px]">
-              {/* Grid: 2 columns on mobile (gap-3), 3 on large, 4 on XL */}
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-8">
-                {filteredMembers.map((member) => (
+          {/* Teams */}
+          {groupedMembers.map((dept) => (
+            <div key={dept.name} className="mb-16">
+              <h2 className="text-3xl font-bold mb-8 text-neutral-900">{dept.name} Team</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
+                {dept.members.map((member) => (
                   <TeamCard
                     key={member.id}
                     member={member}
@@ -251,16 +195,8 @@ export default function TeamPage() {
                   />
                 ))}
               </div>
-              
-              {/* Empty State (Safety fallback) */}
-              {filteredMembers.length === 0 && (
-                <div className="text-center py-20 text-neutral-400">
-                  No members found in this department.
-                </div>
-              )}
             </div>
-
-          </div>
+          ))}
         </div>
       </main>
       <Footer />
