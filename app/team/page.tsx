@@ -50,6 +50,44 @@ const team = [
   },
 ]
 
+type Member = typeof team[number]
+
+function TeamCard({ member, onClick }: { member: Member; onClick: () => void }) {
+  return (
+    <div
+      onClick={onClick}
+      className="group cursor-pointer rounded-3xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col overflow-hidden"
+    >
+      {/* Image container with aspect ratio for better fitting */}
+      <div className="relative w-full aspect-[3/2] overflow-hidden bg-neutral-100">
+        <Image
+          src={member.image || "/placeholder.svg"}
+          alt={member.name}
+          fill
+          // Adjusted sizes for better performance based on grid breakpoints
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="p-5 flex flex-col items-center text-center">
+        <h3 className="text-lg font-semibold text-neutral-900">{member.name}</h3>
+        <span className="mt-1 inline-flex items-center rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-xs font-medium text-neutral-600">
+          {member.role}
+        </span>
+        <p className="mt-3 text-sm leading-relaxed text-neutral-600 line-clamp-3">
+          {member.bio}
+        </p>
+        <div className="mt-4 text-xs font-medium text-primary-600 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          View profile →
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
 export default function TeamPage() {
   const router = useRouter()
 
@@ -67,25 +105,11 @@ export default function TeamPage() {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {team.map((member) => (
-                <div
+                <TeamCard
                   key={member.id}
+                  member={member}
                   onClick={() => router.push(`/team/${member.id}`)}
-                  className="cursor-pointer bg-white rounded-3xl overflow-hidden border border-neutral-200 hover:border-neutral-300 hover:shadow-lg transition-all duration-300 flex flex-col"
-                >
-                  <div className="relative w-full h-64 overflow-hidden">
-                    <Image
-                      src={member.image || "/placeholder.svg"}
-                      alt={member.name}
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-medium text-neutral-900 mb-1">{member.name}</h3>
-                    <p className="text-sm font-medium text-neutral-500 mb-4">{member.role}</p>
-                    <p className="text-neutral-600 text-sm leading-relaxed">{member.bio}</p>
-                  </div>
-                </div>
+                />
               ))}
             </div>
           </div>

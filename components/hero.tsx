@@ -57,8 +57,10 @@
 "use client";
 import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function BackgroundRippleEffectDemo() {
+  const router = useRouter();
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden">
       <BackgroundRippleEffect />
@@ -106,7 +108,8 @@ export default function BackgroundRippleEffectDemo() {
             style={{ animationDuration: "3s" }}
           />
 
-          <button className="relative flex items-center gap-3 rounded-full bg-neutral-900 px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl dark:bg-white dark:text-neutral-900">
+          <button onClick={() => router.push("https://gdg.community.dev/gdg-on-campus-school-of-information-technology-bhopal-india/")
+          } className="relative flex items-center gap-3 rounded-full bg-neutral-900 px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl dark:bg-white dark:text-neutral-900">
             <span>Join Now</span>
             <svg
               className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"

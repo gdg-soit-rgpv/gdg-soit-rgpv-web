@@ -4,10 +4,12 @@ import type React from "react"
 
 import { motion, useInView } from "framer-motion"
 import { useRef, useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 
 export default function JoinCTA() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const router = useRouter();
 
   return (
     <section ref={ref} className="relative py-32 overflow-hidden">
@@ -30,6 +32,7 @@ export default function JoinCTA() {
           </p>
 
           <motion.div
+            onClick={() => router.push("https://gdg.community.dev/gdg-on-campus-school-of-information-technology-bhopal-india/")}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.3, duration: 0.6 }}
