@@ -2,7 +2,7 @@ import Image from "next/image"
 import Footer from "@/components/footer"
 import SmoothScroll from "@/components/smooth-scroll"
 import Link from "next/link"
-import { Github, Linkedin, Twitter, ArrowLeft, Mail } from "lucide-react"
+import { Github, Linkedin, Twitter, Instagram, ArrowLeft, Mail } from "lucide-react"
 import { team } from "@/app/data/team"
 
 
@@ -88,14 +88,14 @@ export default async function MemberPage({ params }: { params: Promise<{ id: str
                       <Linkedin className="w-5 h-5" />
                     </Link>
                   )}
-                  {member.github && (
+                  {member.instagram && (
                     <Link
-                      href={member.github}
+                      href={member.instagram}
                       target="_blank"
                       className="p-3 rounded-full bg-neutral-50 text-neutral-600 hover:bg-[#333] hover:text-white transition-all duration-300"
-                      aria-label="GitHub Profile"
+                      aria-label="Instagram Profile"
                     >
-                      <Github className="w-5 h-5" />
+                      <Instagram className="w-5 h-5" />
                     </Link>
                   )}
                   {member.twitter && (

@@ -5,36 +5,7 @@ import { useRef } from "react"
 import { useRouter } from "next/navigation"
 import { Calendar, MapPin, ArrowRight } from "lucide-react"
 import Image from "next/image"
-
-const events = [
-  {
-    id: "devfest-2024",
-    title: "DevFest 2024",
-    date: "December 15, 2024",
-    location: "SRGPV Campus",
-    description: "The biggest developer festival of the year featuring talks, workshops, and networking.",
-    tag: "Flagship Event",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    id: "flutter-forward",
-    title: "Flutter Forward",
-    date: "January 20, 2025",
-    location: "Tech Hub Auditorium",
-    description: "Explore the latest in Flutter development with hands-on sessions and expert insights.",
-    tag: "Workshop",
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    id: "cloud-study-jam",
-    title: "Cloud Study Jam",
-    date: "February 8, 2025",
-    location: "Innovation Lab",
-    description: "Deep dive into Google Cloud technologies with guided learning paths and certifications.",
-    tag: "Study Jam",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
-  },
-]
+import { events } from "@/app/data/events"
 
 export default function Events() {
   const ref = useRef(null)

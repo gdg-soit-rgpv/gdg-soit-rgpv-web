@@ -59,11 +59,13 @@ function TeamCard({ member, onClick }: { member: any; onClick: () => void }) {
 
 export default function TeamPage() {
   const router = useRouter()
-  const departments = ["Tech", "Event Management", "PR", "Graphics", "A/V"]
-  const groupedMembers = departments.map((dept) => ({
-    name: dept,
-    members: team.filter((m) => m.department === dept),
-  }))
+  // const departments = ["Tech", "Event Management", "PR", "Graphics", "A/V", "Social Media Management"]
+  // const groupedMembers = departments.map((dept) => ({
+  //   name: dept,
+  //   members: team.filter((m) => m.department === dept),
+  // }))
+  const leads = team.filter((m) => m.type === "lead")
+  const volunteers = team.filter((m) => m.type === "volunteer")
   const mainLead = team.find((m) => m.department === "Lead")
 
   return (
@@ -84,21 +86,33 @@ export default function TeamPage() {
             </div>
           )}
 
-          {/* Teams */}
-          {groupedMembers.map((dept) => (
-            <div key={dept.name} className="mb-16">
-              <h2 className="text-3xl font-bold mb-8 text-neutral-900">{dept.name} Team</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
-                {dept.members.map((member) => (
-                  <TeamCard
-                    key={member.id}
-                    member={member}
-                    onClick={() => router.push(`/team/${member.id}`)}
-                  />
-                ))}
-              </div>
+          {/* 🌟 LEADS */}
+          <section className="mb-20">
+            <h2 className="text-3xl font-bold mb-8">Leads</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {leads.map((member) => (
+                <TeamCard
+                  key={member.id}
+                  member={member}
+                  onClick={() => router.push(`/team/${member.id}`)}
+                />
+              ))}
             </div>
-          ))}
+          </section>
+
+          {/* 🙌 VOLUNTEERS */}
+          <section>
+            <h2 className="text-3xl font-bold mb-8">Volunteers</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+              {volunteers.map((member) => (
+                <TeamCard
+                  key={member.id}
+                  member={member}
+                  onClick={() => router.push(`/team/${member.id}`)}
+                />
+              ))}
+            </div>
+          </section>
         </div>
       </main>
       <Footer />
