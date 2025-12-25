@@ -13,10 +13,8 @@ const links = [
 ]
 
 const socials = [
-  { label: "LinkedIn", href: "#", icon: Linkedin },
   { label: "Instagram", href: "https://www.instagram.com/gdg_soitrgpv?igsh=MWpjZmFiYWt3MWdmaw==", icon: Instagram },
   { label: "Github", href: "https://github.com/gdg-soit-rgpv", icon: Github },
-  { label: "YouTube", href: "#", icon: Youtube },
 ]
 
 export default function Footer() {

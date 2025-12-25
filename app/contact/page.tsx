@@ -124,7 +124,6 @@ export default function ContactPage() {
                         {[
                             // { icon: <Twitter className="w-5 h-5" />, href: "#", label: "Twitter" },
                             { icon: <Instagram className="w-5 h-5" />, href: "https://www.instagram.com/gdg_soitrgpv?igsh=MWpjZmFiYWt3MWdmaw==", label: "Instagram" },
-                            { icon: <Linkedin className="w-5 h-5" />, href: "#", label: "LinkedIn" },
                             { icon: <Github className="w-5 h-5" />, href: "https://github.com/gdg-soit-rgpv", label: "GitHub" },
                         ].map((social, idx) => (
                             <a 
