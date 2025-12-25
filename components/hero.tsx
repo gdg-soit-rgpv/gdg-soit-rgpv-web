@@ -52,22 +52,35 @@ export default function Hero() {
             style={{ animationDuration: "3s" }}
           />
 
-          <button onClick={() => window.open("https://gdg.community.dev/gdg-on-campus-school-of-information-technology-bhopal-india/", "_blank")
-          } className="relative flex items-center gap-3 rounded-full bg-neutral-900 px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl dark:bg-white dark:text-neutral-900">
-            <span>Join Now</span>
-            <svg
-              className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
+          <button
+            onClick={() =>
+              window.open(
+                "https://gdg.community.dev/gdg-on-campus-school-of-information-technology-bhopal-india/",
+                "_blank"
+              )
+            }
+            className="group relative inline-flex overflow-hidden rounded-full p-[2px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-50"
+          >
+            {/* The Moving Gradient "Lightning" */}
+            <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#171717_0%,#3b82f6_50%,#171717_100%)]" />
+
+            {/* The Button Content Mask */}
+            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-neutral-900 px-8 py-4 text-lg font-semibold text-white backdrop-blur-3xl transition-all duration-300 group-hover:bg-neutral-800">
+              <span className="mr-2">Join Now</span>
+              <svg
+                className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </span>
           </button>
         </div>
 
