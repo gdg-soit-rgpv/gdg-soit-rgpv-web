@@ -44,7 +44,7 @@ export default function Hero() {
           passionate developers shaping tomorrow&apos;s technology today.
         </p>
 
-        <div className="group relative mt-10">
+        <div className="group relative mt-16">
           {/* Animated gradient border */}
           <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#4285F4] via-[#EA4335] via-[#FBBC04] to-[#34A853] opacity-70 blur-sm transition-all duration-500 group-hover:opacity-100 group-hover:blur-md" />
           <div
@@ -85,7 +85,7 @@ export default function Hero() {
         </div>
 
         {/* Stats/Social Proof */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-center">
+        {/* <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-center">
           <div>
             <p className="text-2xl font-bold text-neutral-900 dark:text-white">
               500+
@@ -112,7 +112,7 @@ export default function Hero() {
               Workshops
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
