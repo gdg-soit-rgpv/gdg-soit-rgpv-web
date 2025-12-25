@@ -160,19 +160,6 @@ export const team = [
 
   // --- VOLUNTEERS: TECH (First) ---
   {
-    id: "kirtan-kumar-kori",
-    name: "Kirtan Kumar Kori",
-    role: "Tech",
-    type: "volunteer",
-    image: "/gdg-team-img/IMG_20251208_192219 - Kirtan.jpg",
-    bio: "Student volunteer in the tech department.",
-    email: "kirtankumarkori@gmail.com",
-    linkedin: "https://www.linkedin.com/in/kirtan-kori-3b6364373?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-    instagram: "https://www.instagram.com/kirtan__x?igsh=MTc2ZGhhZjF2aHFjZg==",
-    twitter: "https://x.com/kirtan_kori?t=0ZvaNPwybusQrQA_1T3V7w&s=09",
-    department: "Tech",
-  },
-  {
     id: "piyush-thakre",
     name: "Piyush Thakre",
     role: "Tech",
@@ -183,6 +170,19 @@ export const team = [
     linkedin: "https://www.linkedin.com/in/piyush-thakre-0484602a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "https://www.instagram.com/thakre_piyushh?igsh=ejVtbTVkZTB0OXdl",
     twitter: "",
+    department: "Tech",
+  },
+  {
+    id: "kirtan-kumar-kori",
+    name: "Kirtan Kumar Kori",
+    role: "Tech",
+    type: "volunteer",
+    image: "/gdg-team-img/IMG_20251208_192219 - Kirtan.jpg",
+    bio: "Student volunteer in the tech department.",
+    email: "kirtankumarkori@gmail.com",
+    linkedin: "https://www.linkedin.com/in/kirtan-kori-3b6364373?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    instagram: "https://www.instagram.com/kirtan__x?igsh=MTc2ZGhhZjF2aHFjZg==",
+    twitter: "https://x.com/kirtan_kori?t=0ZvaNPwybusQrQA_1T3V7w&s=09",
     department: "Tech",
   },
 
