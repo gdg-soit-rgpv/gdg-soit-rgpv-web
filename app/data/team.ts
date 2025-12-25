@@ -158,8 +158,8 @@ export const team = [
   {
     id: "kapil-agnihotri",
     name: "Kapil Agnihotri",
-    role: "Volunteer",
-    type: "volunteer",
+    role: "Content Lead",
+    type: "lead",
     image: "/gdg-team-img/IMG_20251210_002434 - Kapil Agnihotri.jpg",
     bio: "Leads content research and documentation initiatives.",
     email: "kapilagnihotri101@gmail.com",
@@ -262,7 +262,7 @@ export const team = [
   {
     id: "pankaj-chouksey",
     name: "Pankaj Chouksey",
-    role: "Volunteer",
+    role: "Graphics Lead",
     type: "volunteer",
     image: "/gdg-team-img/WhatsApp Image 2025-12-10 at 3.39.06 PM - pankaj chouksey.jpeg",
     bio: "Graphic designer creating visual assets for the community.",
