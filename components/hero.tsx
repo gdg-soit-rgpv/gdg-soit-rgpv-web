@@ -44,7 +44,7 @@ export default function Hero() {
           passionate developers shaping tomorrow&apos;s technology today.
         </p>
 
-        <div className="group relative mt-16">
+        <div className="group relative mt-10">
           {/* Animated gradient border */}
           <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#4285F4] via-[#EA4335] via-[#FBBC04] to-[#34A853] opacity-70 blur-sm transition-all duration-500 group-hover:opacity-100 group-hover:blur-md" />
           <div
@@ -85,10 +85,10 @@ export default function Hero() {
         </div>
 
         {/* Stats/Social Proof */}
-        {/* <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-center">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-center">
           <div>
             <p className="text-2xl font-bold text-neutral-900 dark:text-white">
-              500+
+              300+
             </p>
             <p className="text-sm text-neutral-500 dark:text-neutral-400">
               Members
@@ -97,7 +97,7 @@ export default function Hero() {
           <div className="h-8 w-px bg-neutral-200 dark:bg-neutral-700" />
           <div>
             <p className="text-2xl font-bold text-neutral-900 dark:text-white">
-              50+
+              10+
             </p>
             <p className="text-sm text-neutral-500 dark:text-neutral-400">
               Events
@@ -106,13 +106,13 @@ export default function Hero() {
           <div className="h-8 w-px bg-neutral-200 dark:bg-neutral-700" />
           <div>
             <p className="text-2xl font-bold text-neutral-900 dark:text-white">
-              20+
+              5+
             </p>
             <p className="text-sm text-neutral-500 dark:text-neutral-400">
               Workshops
             </p>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

@@ -123,14 +123,14 @@ export default function AboutPage() {
             {/* Stats */}
             <div className="flex-1 w-full">
               <div className="grid grid-cols-2 gap-6">
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-neutral-100 col-span-2">
+                <div className="bg-white p-8 rounded-3xl shadow-sm border border-neutral-100 col-span-1">
                   <div className="text-5xl font-bold text-neutral-900 mb-2">100+</div>
                   <div className="text-neutral-500">Community Members</div>
                 </div>
-                {/* <div className="bg-white p-8 rounded-3xl shadow-sm border border-neutral-100">
-                  <div className="text-5xl font-bold text-neutral-900 mb-2">50+</div>
+                <div className="bg-white p-8 rounded-3xl shadow-sm border border-neutral-100">
+                  <div className="text-5xl font-bold text-neutral-900 mb-2">10+</div>
                   <div className="text-neutral-500">Events Hosted</div>
-                </div> */}
+                </div>
                 <div className="bg-white p-8 rounded-3xl shadow-sm border border-neutral-100 col-span-2">
                   <div className="text-5xl font-bold text-neutral-900 mb-2">100%</div>
                   <div className="text-neutral-500">Passion for Code</div>
