@@ -129,11 +129,11 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
                                         </Link>
                                     )}
 
-                                    <div className="mt-4 text-center">
+                                    {/* <div className="mt-4 text-center">
                                         <button className="text-sm text-neutral-500 hover:text-black flex items-center justify-center gap-2 w-full py-2">
                                             <Share2 className="w-4 h-4" /> Share Event
                                         </button>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         }
