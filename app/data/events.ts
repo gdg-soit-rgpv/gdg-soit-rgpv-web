@@ -21,13 +21,32 @@ export const events = [
   //   ]
   // },
   {
+    id: "InnovaTE-2026",
+    title: "InnovaTE 2026",
+    date: "29 Mar - 10 Apr",
+    location: "Offline",
+    description: "InnovaTE 2026 is a high-energy hackathon hosted by GDG SOIT RGPV where creativity meets the compiler.",
+    tag: "Upcoming",
+    featured: true,
+    image: "/gdg-events/gdg new event image.jpg",
+    details: "In this edition, we are focusing on Impactful Innovation. We’re calling all developers, UI/UX designers, and problem-solvers to the SOIT campus to build prototypes that matter. From AI-driven campus solutions to sustainable tech, this is your platform to turn What if? into It works!",
+    time: "-----",
+    registerLink: "https://vision.hack2skill.com/event/gdgoc-25-bitnbuildsoit",
+    whatToExpect: [
+      "Intensive Open Innovation Challenges",
+      "Mentorship from Industry Experts",
+      "Exclusive GDG Swag & Rewards",
+      "Hands-on Solution Building"
+    ]
+  },
+  {
     id: "bit-n-build-hackathon",
     title: "Bit n Build Hackathon",
     date: "29 Dec - 17 Jan",
     location: "Online",
     description: "Compete in this high-energy hackathon to solve real-world challenges.",
-    tag: "LIVE NOW",
-    featured: true,
+    tag: "Completed",
+    featured: false,
     image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1000",
     details: "Bit n Build Hackathon: Open Innovation Challenge. Join us for Bit n Build, a high-energy hackathon under our TechSprint campaign! We’re inviting developers to tackle real-world challenges through Open Innovation. Participants will build end-to-end solutions, leveraging Google Technologies like Flutter, Firebase, and Google Cloud. This is your chance to sharpen your skills with expert mentorship, collaborate with the GDG community, and win exclusive Google Swag and digital certificates. Whether you're a beginner or a pro, come turn your ideas into impact, master new tools, and get recognized on our community channels. Let’s build the future together!",
     time: "-----",
