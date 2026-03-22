@@ -160,7 +160,7 @@ export class Popup {
 
     const desc = document.createElement("p");
     desc.innerText =
-      "Join exciting hackathons.";
+      "POWERED BY GOOGLE. ";
     desc.style.color = "#3c4043";
     desc.style.fontSize = isMobile ? "13px" : "14px";
     desc.style.marginBottom = "22px";
@@ -168,7 +168,7 @@ export class Popup {
 
     // Button
     const button = document.createElement("button");
-    button.innerText = "VIEW EVENTS";
+    button.innerText = "VIEW EVENT";
 
     button.style.padding = "12px 24px";
     button.style.borderRadius = "10px";

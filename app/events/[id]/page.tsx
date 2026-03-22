@@ -1,9 +1,15 @@
+
+
 import Footer from "@/components/footer"
 import SmoothScroll from "@/components/smooth-scroll"
 import { Calendar, MapPin, ArrowLeft, Clock, Share2, Ticket } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { events } from "../../data/events"
+
+
+
+
 
 export default async function EventPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
@@ -23,7 +29,7 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
     return (
         <SmoothScroll>
             <main className="min-h-screen bg-white text-neutral-900">
-                {/* Navigation Bar Placeholder (if global nav exists) or just spacing */}
+                
                 <div className="pt-24 md:pt-32 px-6 md:px-8 max-w-7xl mx-auto">
 
                     {/* Back Link */}
@@ -67,8 +73,10 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
                     {/* Content Grid */}
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 pb-24">
 
-                        {/* Left Column: Description */}
+                        {/* Left Column */}
                         <div className="lg:col-span-2 space-y-8">
+
+                            {/* About */}
                             <div>
                                 <h2 className="text-2xl font-bold mb-4">About the Event</h2>
                                 <p className="text-lg text-neutral-600 leading-relaxed whitespace-pre-line">
@@ -76,7 +84,24 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
                                 </p>
                             </div>
 
-                            {/* Dynamic What to Expect Section */}
+                            {/* 🔥 NEW: ROADMAP SECTION */}
+                            {event.roadmapImage && (
+                                <div className="mt-8">
+                                    <h2 className="text-2xl font-bold mb-4">Event Roadmap</h2>
+
+                                    <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-md">
+                                        <Image
+                                            src={event.roadmapImage}
+                                            alt="Event Roadmap"
+                                            width={1000}
+                                            height={500}
+                                            className="w-full object-cover"
+                                        />
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* What to Expect */}
                             {event.whatToExpect && event.whatToExpect.length > 0 && (
                                 <div className="p-6 bg-neutral-50 rounded-2xl border border-neutral-100">
                                     <h3 className="font-semibold mb-2">What to expect</h3>
@@ -89,14 +114,48 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
                             )}
                         </div>
 
-                        {/* Right Column: Sidebar */}
+                        {/* Right Column */}
+
+                        
+
+                        {/*{event.eventCode && (
+                            <div className="mb-6 p-4 border border-dashed border-neutral-300 rounded-xl bg-neutral-50 flex items-center justify-between">
+                                
+                                <div>
+                                    <div className="text-xs text-neutral-500">Event Code</div>
+                                    <div className="font-mono text-lg font-semibold tracking-wide">
+                                        {event.eventCode}
+                                    </div>
+                                </div>
+
+                                <button
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(event.eventCode);
+                                    }}
+                                    className="px-4 py-2 text-sm bg-black text-white rounded-lg hover:bg-neutral-800 transition"
+                                >
+                                    Copy
+                                </button>
+
+                            </div>
+                        )}*/}
+                        
+
+                        
+                        
+
+                        
+
+                        
+                        
                         {event.registerLink &&
                             <div className="space-y-6">
-                                {/* Registration Card */}
                                 <div className="p-6 rounded-3xl border border-neutral-200 shadow-lg bg-white sticky top-24">
                                     <h3 className="text-xl font-bold mb-6">Event Details</h3>
 
                                     <div className="space-y-4 mb-8">
+                                        
+                                                   
                                         <div className="flex items-start gap-4">
                                             <div className="p-2 bg-neutral-100 rounded-lg">
                                                 <Clock className="w-5 h-5 text-neutral-600" />
@@ -115,9 +174,25 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
                                                 <div className="text-sm text-neutral-500">{event.location}</div>
                                             </div>
                                         </div>
+
+                                        {event.eventCode && (
+    <div className="mb-6">
+        <div className="w-full flex items-center justify-between px-4 py-3 border border-neutral-200 rounded-xl">
+
+            {/* Code */}
+            <span className="font-semibold tracking-wide">
+                {event.eventCode}
+            </span>
+
+            {/* Copy Button */}
+           
+
+        </div>
+    </div>
+)}
+                                        
                                     </div>
 
-                                    {/* Conditional Register Button */}
                                     {event.registerLink && (
                                         <Link
                                             href={event.registerLink}
@@ -128,12 +203,6 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
                                             Register Now
                                         </Link>
                                     )}
-
-                                    {/* <div className="mt-4 text-center">
-                                        <button className="text-sm text-neutral-500 hover:text-black flex items-center justify-center gap-2 w-full py-2">
-                                            <Share2 className="w-4 h-4" /> Share Event
-                                        </button>
-                                    </div> */}
                                 </div>
                             </div>
                         }

@@ -1,4 +1,22 @@
 
+export type Event = {
+  id: string;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  tag: string;
+  featured: boolean;
+  image: string;
+  details: string;
+  time: string;
+  registerLink: string;
+  whatToExpect: string[];
+  roadmapImage?: string;
+  eventCode?: string; // ✅ optional here
+};
+
+
 export const events = [
   // {
   //   id: "devfest-2024",
@@ -35,6 +53,7 @@ export const events = [
   time: "Submission Deadline: April 2026",
   registerLink:
     "https://promptwars.in/solutionchallenge2026.html",
+  eventCode: "USE CODE : V4J4EC",      // OPTIONAL
   whatToExpect: [
     "₹10 Lakh+ Prize Pool 💰",
     "Build real-world impactful projects using Google technologies",
@@ -42,7 +61,9 @@ export const events = [
     "Opportunity to compete globally",
     "Certificates, recognition, and exciting rewards",
     "Hands-on experience with AI, Cloud, and App Development"
-  ]
+    ],
+
+  roadmapImage : "/gdg-events/solutionChallengeRoadmap.png"// OPTIONAL
   },
   {
     id: "bit-n-build-hackathon",
