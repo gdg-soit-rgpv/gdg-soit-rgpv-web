@@ -39,6 +39,26 @@ export const events = [
   //   ]
   // },
   {
+    id: "ai-odyssey-2026",
+    title: "AI ODYSSEY 2026",
+    date: "4 MAY 2026",
+    location: "Offline",
+    description: "Compete in this high-energy hackathon to solve real-world challenges.",
+    tag: "Upcoming",
+    featured: true,
+    image: "/gdg-events/ai-adyssey-2026.png",
+    details: "AI Odyssey 2026 is an intensive, one-day immersive event designed to transform students and aspiring developers from AI learners into AI builders.Blending high-energy learning with a multi-game competitive arena, the event challenges participants to apply theoretical concepts to real-world scenarios.It is a unique platform where innovation meets hands-on execution, specifically tailored for engineering and technical students to bridge the gap between academic study and industry-ready skills.",
+    time: "11:00AM to 5:00PM",
+    registerLink: "https://gdg.community.dev/e/mn43cw/",
+    whatToExpect: [
+      "Intensive Open Innovation Challenges",
+      "Team-Based Strategic Competition",
+      "Rapid Skill Transformation",
+      "Exclusive GDG Swag & Rewards",
+      "Hands-on Solution Building"
+    ]
+  },
+  {
      id: "solution-challenge-2026",
   title: "Google Solution Challenge 2026",
   date: "Mar - Apr 2026",

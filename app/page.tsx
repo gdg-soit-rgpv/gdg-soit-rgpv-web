@@ -15,15 +15,15 @@ export default function Home() {
 
  
 
-useEffect(() => {
-  const loadPopup = async () => {
-    const { Popup } = await import("./popup");
-    const popup = new Popup();
-    popup.show();
-  };
+// useEffect(() => {
+//   const loadPopup = async () => {
+//     const { Popup } = await import("./popup");
+//     const popup = new Popup();
+//     popup.show();
+//   };
 
-  loadPopup();
-}, []);
+//   loadPopup();
+// }, []);
 
   return (
     <SmoothScroll>
