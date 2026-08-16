@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { Popup } from "./popup";              //import for pop up visibility
+// import { Popup } from "./popup";              //import for pop up visibility (commented out)
 import dynamic from "next/dynamic";
 import Hero from "@/components/hero"
 import About from "@/components/about"
@@ -16,6 +16,8 @@ export default function Home() {
 
 
 
+  // Popup disabled: all events completed
+  /*
   useEffect(() => {
     const loadPopup = async () => {
       const { Popup } = await import("./popup");
@@ -24,6 +26,7 @@ export default function Home() {
     };
     loadPopup();
   }, []);
+  */
 
   return (
     <SmoothScroll>

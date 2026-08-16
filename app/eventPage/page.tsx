@@ -5,19 +5,18 @@ export default function AIOdysseyPage() {
     <div className="min-h-screen bg-[#F8F9FA] py-16 px-4 sm:px-8 lg:px-16 font-sans text-gray-800 selection:bg-blue-100">
       <div className="max-w-7xl mx-auto space-y-16">
 
-        {/* Floating Register Button - Redirects to Wikipedia */}
+        {/* Floating Register Button (Disabled: Registration Closed) */}
         <div className="fixed bottom-8 right-8 z-50">
-          <a
-            href="https://gdg.community.dev/events/details/google-gdg-on-campus-school-of-information-technology-bhopal-india-presents-ai-odyssey/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gradient-to-r from-[#4285F4] to-[#34A853] text-white font-bold py-4 px-8 rounded-full shadow-2xl hover:scale-105 transition-transform active:scale-95 flex items-center gap-2 border-2 border-white no-underline"
+          <div
+            aria-disabled="true"
+            className="bg-gradient-to-r from-[#4285F4] to-[#34A853] text-white font-bold py-4 px-8 rounded-full shadow-2xl opacity-60 cursor-not-allowed flex items-center gap-2 border-2 border-white no-underline"
+            title="Registration Closed"
           >
-            Register Now
+            Registration Closed
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-          </a>
+          </div>
         </div>
 
         {/* Hero Section */}

@@ -182,14 +182,15 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
                                     </div>
 
                                     {event.registerLink && (
-                                        <Link
-                                            href={event.registerLink}
-                                            target="_blank"
-                                            className="w-full py-4 bg-black text-white rounded-xl font-bold hover:bg-neutral-800 transition-all flex items-center justify-center gap-2 group"
+                                        <div
+                                            role="button"
+                                            aria-disabled="true"
+                                            className="w-full py-4 bg-black text-white rounded-xl font-bold opacity-60 cursor-not-allowed flex items-center justify-center gap-2"
+                                            title="Registration Closed"
                                         >
                                             <Ticket className="w-5 h-5" />
-                                            Register Now
-                                        </Link>
+                                            Registration Closed
+                                        </div>
                                     )}
                                 </div>
                             </div>

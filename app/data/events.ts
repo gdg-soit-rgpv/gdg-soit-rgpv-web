@@ -43,8 +43,8 @@ export const events = [
     title: "",
     date: "5 MAY 2026",
     location: "RGPV Campus",
-    description: "",
-    tag: "Upcoming",
+    description: "AI Odyssey 2026 is an immersive AI-focused tech fest featuring expert insights, interactive sessions, quizzes, hackathons, and creative AI challenges. It brings students together to learn, compete, innovate, and explore the future of Artificial Intelligence.",
+    tag: "Completed",
     featured: true,
     image: "/gdg-events/ai-adyssey-2026.png",
     details: "AI Odyssey 2026 is an intensive, one-day immersive event designed to transform students and aspiring developers from AI learners into AI builders.Blending high-energy learning with a multi-game competitive arena, the event challenges participants to apply theoretical concepts to real-world scenarios.It is a unique platform where innovation meets hands-on execution, specifically tailored for engineering and technical students to bridge the gap between academic study and industry-ready skills.",
@@ -65,7 +65,7 @@ export const events = [
     location: "Online",
     description:
       "Google Solution Challenge 2026 is a global hackathon by GDG where students build innovative solutions for real-world problems using Google technologies and compete for ₹10 Lakh+ prize pool.",
-    tag: "On Going",
+    tag: "Completed",
     featured: false,
     image: "/gdg-events/d6fc9124-59f7-4b50-a897-6039562cf58a.png",
     details:
